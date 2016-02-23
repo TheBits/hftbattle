@@ -1,0 +1,7 @@
+{
+  "instrument": "ES",
+  "date": "2015.09.29",
+  "log_level": "info",
+  "log_orders": true,
+  "log_deals": true
+}

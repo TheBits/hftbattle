@@ -1,0 +1,3 @@
+SymbolDescription	MarketID	VendorID	SecurityID	SymbolStartsWith	SymbolContains	SymbolNotContains	SymbolMinLength	SymbolMaxLength	RuleStartDate	RuleStopDate	FeeType	FeeValue	AlternativeFeeValue	MinStep	PriceOfMinStep	SharesPerLot	PricePerWhat	SecBoard	Currency	FeeCurrency
+Equity Futures S&P	CME			ES			4	4	2015-01-01 00:00:00.000	2025-01-01 00:00:00.000	PerLot	.5000000000	.5000000000	25.0000000000	12.5000000000	1	PerLot	CMEGlobexEquityFutures	USD	
+Crude Futures CL	CME			CL			4	4	2015-01-01 00:00:00.000	2025-01-01 00:00:00.000	PerLot	.0000000000	.0000000000	1.0000000000	1.0000000000	1	PerLot	NYMEX Globex Crude & Crude Refined Futures	USD	
