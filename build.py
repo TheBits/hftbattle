@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+import multiprocessing
 import os
-import sys
 import platform
 import subprocess
+import sys
 
 pack_path = os.path.dirname(os.path.realpath(__file__))
 build_dir = os.path.join(pack_path, "build")
@@ -27,14 +29,15 @@ elif system == 'Darwin':
 
 try:
     process = subprocess.Popen(command, shell=False, stdout=subprocess.PIPE)
-    for line in iter(process.stdout.readline, ''):
-        sys.stdout.write(line)
-except Exception, ex:
-    print '-- Build FAILED: %s' % str(ex)
-    print 'CMake is probably not installed.\n%s' % cmake_install_cmd
+    for line in iter(process.stdout.readline, b''):
+        sys.stdout.write(line.decode())
+except Exception as ex:
+    print('-- Build FAILED: %s' % str(ex))
+    print('CMake is probably not installed.\n%s' % cmake_install_cmd)
     sys.exit()
 
-process = subprocess.Popen(["cmake", "--build", ".", "--target", "all", "--", "-j", "8"], shell=False, stdout=subprocess.PIPE)
-for line in iter(process.stdout.readline, ''):
-    sys.stdout.write(line)
+cpu_count = multiprocessing.cpu_count()
+process = subprocess.Popen(["cmake", "--build", ".", "--target", "all", "--", "-j", str(cpu_count)], shell=False, stdout=subprocess.PIPE)
+for line in iter(process.stdout.readline, b''):
+    sys.stdout.write(line.decode())
 
