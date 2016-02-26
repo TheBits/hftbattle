@@ -19,10 +19,10 @@ elif system == 'Darwin':
 elif system == 'Windows':
     executable_name = 'windows_launcher.exe'
 else:
-    print 'Your OS is not supported'
+    print('Your OS is not supported')
     sys.exit()
 
 executable_path = os.path.join(script_path, executable_name)
 process = subprocess.Popen([executable_path, config], shell=False, stdout=subprocess.PIPE)
-for line in iter(process.stdout.readline, ''):
-    sys.stdout.write(line)
+for line in iter(process.stdout.readline, b''):
+    sys.stdout.write(line.decode())
